@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+
+    <!-- Bootstrap Icons CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
+    <!-- Bootstrap Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="./css/style_customer.css">
+
+    <!-- Google Places API -->
+    <script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_API_KEY&libraries=places"></script>
+
+    <!-- Your Custom Script -->
+    <script src="./js/script.js"></script>
+    <!--Owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.green.min.css" integrity="sha512-C8Movfk6DU/H5PzarG0+Dv9MA9IZzvmQpO/3cIlGIflmtY3vIud07myMu4M/NTPJl8jmZtt/4mC9bAioMZBBdA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-custom navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+            <ul class="nav navbar-nav - d-flex justify-content-center " style="flex-direction: row;">
+                <li><a href="#">Trang Chủ</a></li>
+                <li><a href="#gioithieu">Giới Thiệu</a></li>
+                <li><a href="#">Phòng</a></li>
+                <li><a href="#tienich">Tiện Nghi</a></li>
+                <li><a href="#">Liên Hệ</a></li>
+           
+        </div>
+    </nav>
+    <!-- Booking form -->
+    
+        <div class="container">
+            <form class="form-inline ">
+                <!-- filter field -->
+                    <div class="form-group">
+                        <label class="form-label" for="filter">Giá Phòng</label>
+                        <select class="form-control" id="filter" required>
+                        <option value="" disabled selected hidden>Price</option>
+                        <option>$100-$1000</option>
+                        <option>$10000$-$200000</option>
+                        </select>
+                    </div>
+  
+                <!-- Check-in field -->
+                <div class="form-group">
+                    <label  class ="form-label" for ="check-in">Ngày nhận phòng</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control icon-input" id="check-in" placeholder="DD MM YYYY">
+                                <i class="bi bi-calendar-check-fill input-icon"></i>
+                      </div>
+                </div>
+                <!-- Check-out field -->
+                <div class="form-group">
+                    <label class ="form-label" for="check-out">Ngày trả phòng</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control icon-input" id="check-out" placeholder="DD MM YYYY">
+                                <i class="bi bi-calendar-check-fill input-icon"></i>
+                    </div>
+                </div>
+                <!-- Adults field -->
+                <div class="form-group">
+                    <label class ="form-label" for="adults">Kiểu Phòng</label>
+                    <select class="form-control" id="adults">
+                        <option>Tiêu Chuẩn</option>
+                        <option>Hạng Sang</option>
+                    </select>
+                </div>
+                <!-- Search button -->
+                <button type="submit" class="btn btn-primary btn-search">Tìm</button>
+            </form>
+        </div>
+    <!-- Main content -->
+
+        <div class = "container-fluid">
+            <img src = "./image/banner.jpeg" class="" alt="" style="max-width: 100%;">
+            <p class ="infor" >Thông tin phòng nổi bật</p>
+        </div>
+
+        <!--Danh sách phòng-->
+        <div id ="gioithieu" class="container mt-5" style ="margin-right:110px;">
+            <div class="owl-carousel">
+                <div class="item">
+                    <div class="card">
+                        <img src="./image/ks1.jpg" alt="">
+                        <div class="card-body">
+                            <a href="#" class="card-link">Xem thêm</a>
+                            <p>Giá phòng<br>Số lượng</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="card">
+                        <img src="./image/ks2.jpg" alt="">
+                        <div class="card-body">
+                            <a href="#" class="card-link">Xem thêm</a>
+                            <p>Giá phòng<br>Số lượng</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="card">
+                        <img src="./image/ks4.jpg" alt="">
+                        <div class="card-body">
+                            <a href="#" class="card-link">Xem thêm</a>
+                            <p>Giá phòng<br>Số lượng</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="card">
+                        <img src="./image/ks2.jpg" alt="">
+                        <div class="card-body">
+                            <a href="#" class="card-link">Xem thêm</a>
+                            <p>Giá phòng<br>Số lượng</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="card">
+                        <img src="./image/ks2.jpg" alt="">
+                        <div class="card-body">
+                            <a href="#" class="card-link">Xem thêm</a>
+                            <p>Giá phòng<br>Số lượng</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="card">
+                        <img src="./image/ks2.jpg" alt="">
+                        <div class="card-body">
+                            <a href="#" class="card-link">Xem thêm</a>
+                            <p>Giá phòng<br>Số lượng</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!--Ưu đãi-->
+        <p class ="infor" style="margin-left: 0;text-align: center;" >Ưu đãi nổi bật</p>
+        
+        <div id ="tienich" class="container mt-5" style ="margin-right:110px;">
+            <div class="owl-carousel">
+                <div class="item">
+                    <div class="card">
+                        <img src="./image/ks1.jpg" alt="">
+                        <div class="card-body">
+                            <a href="#" class="card-link">Xem thêm</a>
+                            <p>Giá phòng<br>Số lượng</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="card">
+                        <img src="./image/ks2.jpg" alt="">
+                        <div class="card-body">
+                            <a href="#" class="card-link">Xem thêm</a>
+                            <p>Giá phòng<br>Số lượng</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="card">
+                        <img src="./image/ks4.jpg" alt="">
+                        <div class="card-body">
+                            <h2>GYM</h2>
+                            <p>Chi tiết<br>Thời Gian</p> 
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="card">
+                        <img src="./image/ks2.jpg" alt="">
+                        <div class="card-body">
+                            <h2>GYM</h2>
+                            <p>Chi tiết<br>Thời Gian</p> 
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="card">
+                        <img src="./image/ks2.jpg" alt="">
+                        <div class="card-body">
+                            <h2>GYM</h2>
+                            <p>Chi tiết<br>Thời Gian</p> 
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="card">
+                        <img src="./image/ks2.jpg" alt="">
+                        <div class="card-body">
+                            <h2>GYM</h2>
+                            <p>Chi tiết<br>Thời Gian</p> 
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+          
+        <!--Chân trang-->
+        <footer>
+            <div class ="row">
+                <div class ="boxcenter2">
+                        <div class ="box boxfooter1 colorc">
+                           <h4>HƯỚNG DẪN</h4> 
+                        </div>
+
+                        <div class =" box boxfooter2 colorc">
+                            <h4>THEO DÕI</h4> 
+                         </div>
+
+                        <div class =" box boxfooter3 colorc">
+                            <h4>LIÊN HỆ</h4> 
+                            <div class="add mrb">1 Đại Cồ Việt, Bách Khoa, Hai Bà Trưng, Hà Nội</div>
+                            <div class="add mrb">Số điện thoai: xxxxxx</div>
+                            <div class="add mrb">Email:KS@mail.com</div>
+                    </div>
+                </div>
+            </div>
+        
+        </footer>
+
+</body>
+</html>
