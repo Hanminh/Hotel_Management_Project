@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@page import="DAO.RoomDAO"%>
+<%@page import="model.Room"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +10,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quản Trị Khách Sạn</title>
-    <link rel="stylesheet" href="/NMCNPM/Manager/css/management.css">
-    <link rel="stylesheet" href="/NMCNPM/Manager/fontawesome-free-6.5.1-web/css/all.min.css">
+    <link rel="stylesheet" href="/NMCNPM/Manager1/css/management.css">
+    <link rel="stylesheet" href="/NMCNPM/Manager1/fontawesome-free-6.5.1-web/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -102,26 +105,60 @@
                         </button>
                     </div>
                     <div class="rooms">
-                        <table style="width: 100%">
-                            <tr >
+                        <table style="width: 100%">	
+                             <tr >
                                 <th style="width: 5%">STT</th>
-                                <th style="width: 10%">ID Phòng</th>
+                                <th style="width: 5%">ID phòng</th>
                                 <th style="width: 10%">Tên phòng</th>
                                 <th style="width: 10%">Loại phòng</th>
-                                <th style="width: 5%">Số lượng</th>
-                                <th style="width: 25%">Thông tin</th>
-                                <th style="width: 25%">Giá phòng</th>
-                                <th style="width: 5%">Trạng thái</th>
-                                <th style="width: 5%">Hành động</th>
+                                <th style="width: 10%">Số lượng</th>
+                                <th style="width: 20%">Thông tin</th>
+                                <th style="width: 20%">Giá phòng</th>
+                                <th style="width: 10%">Trạng thái</th>
+                                <th style="width: 5%">Edit</th>
+                                <th style="width: 5%">Delete</th>
                             </tr>
-                            <<tr class="room" data-room-index="${index}">
-                                    <button class="btn-edit-room" onclick="handleEditRoom(${index})">
-                                        <i class="fa-solid fa-pen"></i>
-                                    </button>
-                                    <button class="btn-delete-room" onclick="handleDeleteRoom(${index})">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-                                </td>
+							<tr>
+								<% RoomDAO roomDAO = new RoomDAO(); %>
+                            <% ArrayList<Room> roomList = (ArrayList<Room>)roomDAO.selectAll();
+                            int count = 1;
+                            if (roomList != null){
+                            	for(Room room : roomList){
+                            %>
+                            <tr class="room" data-room-index="${index}">
+                            <td><%= count %></td>
+                            <td><%= room.getRoomID() %></td>
+                            <td><%= room.getRoomName()%></td>
+                            <td><%= room.getRoomType()%></td>
+                            <td><%= room.getRoomAmount()%></td>
+                            <td><%= room.getRoomDescription()%></td>
+                            <td><%= room.getRoomPrice()%></td>
+                            <td><%= room.getRoomStatus()%></td>
+                            <% out.print("<td>");
+                        		out.print("<a href=" + request.getContextPath() + "/listStaffController?action=edit&id=" + room.getRoomID() + " class=\"btn-link\" onclick=\"handleEditRoom(" + room.getRoomID() + ")\">");
+                        		out.print("<button class=\"btn-edit-room\" style=\"width: 30px; height: 30px; background-color: #0076ff; color: white; border: none; border-radius: 4px;\">"); // Adjusted style
+                        		out.print("<i class=\"fa-solid fa-pen\"></i>");
+                        		out.print("</button>");
+                        		out.print("</a>");
+                        		out.print("</td>");
+
+
+                        		out.print("<td>");
+                        		out.print("<a href=" + request.getContextPath() + "/listStaffController?action=delete&id=" + room.getRoomID() + " class=\"btn-link\" onclick=\"handleDeleteRoom(" + room.getRoomID() + ")\">");
+                        		out.print("<button class=\"btn-delete-room\" style=\"width: 30px; height: 30px; background-color: #d13d3c; color: white; border: none; border-radius: 4px;\">"); // Add color: red
+                        		out.print("<i class=\"fa-solid fa-trash\"></i>");
+                        		out.print("</button>");
+                        		out.print("</a>");
+                        		out.print("</td>");
+
+                        		out.print("</tr>");
+                        		%>
+                             <% 	count++;
+                            	}
+                             }else {
+                            	 out.println("Danh sách rỗng");
+                             }
+                            %>		
                             </tr>
                         </table>
                     </div>
@@ -134,37 +171,63 @@
             <!-- Thêm Phòng Mới -->
             <div class="add-room-container">
                 <div class="add-room-modal">
-                <form action="" method="POST">
-                    <i class="fa-solid fa-xmark icon-close" onclick="closeAddRoomModal()"></i>
+                <form action="AddRoom" method="POST">
+                    <i class="fa-solid fa-xmark icon-close"></i>
                     <div class="title">Tạo phòng mới</div>
                     <div class="content">
-                    <div class="room-name">
+                    
+                    <div style="margin-top:5px;" class="room-id">
+                        <label for="room-image">ID</label>
+                        <input type="text" id="room-id" name="room-id" />
+                    </div>
+                    
+                    <div style="margin-top:5px;"  class="room-name">
                         <label for="room-name">Tên phòng</label>
                         <input type="text" id="room-name" name="room-name" />
                     </div>
-                    <div class="room-image">
-                        <label for="room-image">Link hình ảnh</label>
-                        <input type="text" id="room-image" name="room-image" />
-                    </div>
-                    <div class="room-type">
-                        <label for="room-type">Loại phòng</label>
-                        <input type="text" id="room-type" name="room-type" />
-                    </div>
-                    <div class="room-description">
+                  
+                    <div style="margin-top:5px;"  class="room-amount">
+                    	<div style="display: inline;" class="room-type">
+	                        <label for="room-type">Loại phòng</label>
+	                        <select style="width: 150px; height: 30px; border-radius: 4px;" id="roomType" name="roomType">
+	                        	<option value = "Executive" > Phòng Executive </option>
+	                        	<option value = "Deluxe" > Phòng Deluxe </option>
+	                        	<option value = "Standard" > Phòng Standard </option>
+	                        	<option value = "Superior" > Phòng Superior </option>
+	                        </select>
+           				</div>
+           				<div  style="display: inline;  margin-left:40px" class = "room-amount">
+           					<label for="room-amount">Số lượng người</label>
+                        	<select  style="width: 35px; height: 30px; border-radius: 4px;" id = "roomAmount" name = "roomAmount">
+	                        	<option value = "1" > 1 </option>
+	                        	<option value = "2" > 2 </option>
+	                        	<option value = "3" > 3 </option>
+	                        	<option value = "4" > 4 </option>
+	                        </select>
+           				</div>
+           				<div  style="display: inline;  margin-left:40px" class = "room-amount">
+           					<label for="room-amount">Trạng thái phòng</label>
+                        	<select  style="width: 100px; height: 30px; border-radius: 4px;" id = "roomStatus" name = "roomStatus">
+	                        	<option value = "Avaliable" > Còn trống </option>
+	                        	<option value = "Unavaliable" > Đã đặt </option>
+	                        </select>
+           				</div>
+                    </div> 
+                    <div style="margin-top:5px;"  class="room-description">
                         <label for="room-description">Mô tả</label>
                         <textarea name="room-description" id="room-description">
                         </textarea>
                     </div>
-                    <div class="room-price">
+                
+                    <div style="margin-top:5px;"  class="room-price">
                         <label for="room-price">Giá</label>
                         <input type="text" name="room-price" id="room-price" />
                     </div>
-                    <div class="btn-submit btn btn-primary" onclick="AddRoom()">Tạo mới</div>
+                    <button  type ="submit"> Tạo mới </button>
                     </div>
                 </form>
                 </div>
             </div>
-
             <!-- Chỉnh sửa thông tin phòng -->
             <div class="edit-room-container">
                 <div class="edit-room-modal">
@@ -204,5 +267,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript"></script>
   
-      <script src="/NMCNPM/Manager/js/management.js"></script>  </body>
+      <script src="/NMCNPM/Manager1/js/management.js"></script>  </body>
 </html>

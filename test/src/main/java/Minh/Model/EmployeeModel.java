@@ -104,8 +104,33 @@ public class EmployeeModel {
 		return count;
 	}
 
-	public boolean update(Employee employee) {
-		return false;
+	public void update(Employee e) {
+		Connection connect = null;
+		PreparedStatement stmt = null;
+		String employeeId = e.getEmployeeID();
+		String name = e.getEmployeeName();
+		String gender = e.getEmployeeGender();
+		int age = e.getEmployeeAge();
+		String address = e.getEmployeeAddress();
+		String phone = e.getEmployeePhoneNumber();
+		String email = e.getEmployeeEmail();
+		try {
+			connect = DatabaseConfig.getConnection();
+			String query = "update employee set employeeName= ?, employeeGender = ?, employeeAge = ? ,employeeAddress = ? ,employeePhoneNumber = ? , employeeEmail = ? "
+					+ "where idEmployee = ?";
+			stmt = connect.prepareStatement(query);
+			stmt.setString(1, name );
+			stmt.setString(2, gender);
+			stmt.setInt(3, age);
+			stmt.setString(4, address);
+			stmt.setString(5, phone);
+			stmt.setString(6, email);
+			stmt.setString(7, employeeId);
+			stmt.execute();
+			
+		} catch (SQLException ee) {
+			ee.printStackTrace();
+		}
 	}
 
 	public boolean insert(Employee employee) {

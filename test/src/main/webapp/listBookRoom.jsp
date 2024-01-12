@@ -7,8 +7,8 @@
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quản Trị Khách Sạn</title>
-<link rel="stylesheet" href="/NMCNPM/Manager/css/management.css">
-    <link rel="stylesheet" href="/NMCNPM/Manager/fontawesome-free-6.5.1-web/css/all.min.css">
+    <link rel="stylesheet" href="/NMCNPM/Manager1/css/management.css">
+    <link rel="stylesheet" href="/NMCNPM/Manager1/fontawesome-free-6.5.1-web/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
@@ -154,6 +154,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript"></script>
   
-            <script src="/NMCNPM/Manager/js/management.js"></script>
+            <script src="/NMCNPM/Manager1/js/management.js"></script>
   </body>
 </html>

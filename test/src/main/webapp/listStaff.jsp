@@ -15,8 +15,8 @@
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quản Trị Khách Sạn</title>
-    <link rel="stylesheet" href="/NMCNPM/Manager/css/management.css">
-    <link rel="stylesheet" href="/NMCNPM/Manager/fontawesome-free-6.5.1-web/css/all.min.css">
+    <link rel="stylesheet" href="/NMCNPM/Manager1/css/management.css">
+    <link rel="stylesheet" href="/NMCNPM/Manager1/fontawesome-free-6.5.1-web/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet"> 
 </head>
@@ -67,8 +67,10 @@
               <div class="header-search-icon" style="position: absolute; margin-left: 5%;">
                 <form action="${pageContext.request.servletContext.contextPath}/listStaffController?action=searchStaff" method="post">
                   <input type="text" placeholder="Tìm kiếm" name ="searchInput" style="border-radius: 17px; text-align: left;">
-                  <i id = "search-icon" style="position: absolute; margin-left: -27px;color:cadetblue ; margin-top: 5.9px; cursor: pointer;" class="fa-solid fa-magnifying-glass"></i>
-                  <input type=submit value="submit"> 
+					<button type="submit" style="position: relative; background: none; border: none; cursor: pointer;">
+					    <i id="search-icon" style="position: absolute; margin-left: -32px; color: cadetblue; margin-top: -14px" class="fa-solid fa-magnifying-glass"></i>
+					    
+					</button>
                </form>
               </div>
  <script>
@@ -107,23 +109,23 @@
       </div>
 
             <!--thêm nhân viên-->
-            <div class="add-staff-container">
-                <div class="add-staff-modal">
+            <div class="add-staff-container" >
+                <div class="add-staff-modal" style=" height: 93%">
                 <form action="${pageContext.request.servletContext.contextPath}/listStaffController?action=addStaff" method="post">
                     <i class="fa-solid fa-xmark icon-close"></i>
                     <div class="title">Thêm Nhân Viên</div>
                     <div class="content">
                         <div class="staff-id">
                             <label for="staff-id">Id Nhân Viên</label>
-                            <input type="text" id="staff-id" name="staff-id" />
+                            <input type="text" id="staff-id" name="staff-id" required />
                         </div>     
                     <div class="staff-name">
-                        <label for="staff-name">Họ Tên</label>
-                        <input type="text" id="staff-name" name="staff-name" />
+                        <label for	="staff-name">Họ Tên</label>
+                        <input type="text" id="staff-name" name="staff-name" required />
                     </div>
                     <div class="staff-gender">
                         <label for="staff-gender">Giới Tính</label>
-                        <select id="staff-gender" name="staff-gender">
+                        <select id="staff-gender" name="staff-gender" required >
                             <option selected>Nam</option>
                             <option >Nữ</option>
                             <option>Khác</option>
@@ -131,21 +133,21 @@
                     </div>
                     <div class="staff-date">
                         <label for="staff-date">Ngày Sinh</label>
-                        <input type="date" id="staff-date" name="staff-date" />
+                        <input type="date" id="staff-date" name="staff-date" required/>
                     </div>
                     <div class="staff-position">
                         <label for="staff-address">Địa Chỉ</label>
-                        <input type="text" id="staff-address" name="staff-address"> 
+                        <input type="text" id="staff-address" name="staff-address" required> 
                     </div>
                     <div class="staff-phone">
                         <label for="staff-phone">Số Điện Thoại</label>
-                        <input type="number" name="staff-phone" id="staff-phone">
+                        <input type="number" name="staff-phone" id="staff-phone"required >
                     </div>
                     <div class="staff-email">
                         <label for="staff-email">Email</label>
-                        <input type="email" id="staff-email" name="staff-email">
+                        <input type="email" id="staff-email" name="staff-email"required>
                     </div>
-                    <input type="submit" value="Tạo mới">
+                    <input type="submit" style="color: white;  background-color: #0a96b4;" value="Tạo mới">
                     </div>
                 </form>
                 </div>
@@ -222,17 +224,37 @@
                         		out.print("<td>" + e.getEmployeeAddress()+ "</td>");
                         		out.print("<td>" + e.getEmployeePhoneNumber()+ "</td>");
                         		out.print("<td>" + e.getEmployeeEmail()+ "</td>");
- /*                        		out.print("<td><a href=" + request.getContextPath() 
+/*                          		out.print("<td><a href=" + request.getContextPath() 
                         		+ "/listStaffController?action=edit&id=" + e.getAccountID()
-                        		+">EDIT</a></td>"); */
-                        		out.print("<td><div style=\"color: blue; cursor: pointer; text-decoration: none;\" onclick=\"handleEditStaff()\" onmouseover=\"this.style.color='green'; this.style.textDecoration='underline'\" onmouseout=\"this.style.color='blue'; this.style.textDecoration='none'\">EDIT</div></td>");
+                        		+">EDIT</a></td>"); 
                         		out.print("<td><a href=" + request.getContextPath() 
                         		+ "/listStaffController?action=delete&" 
                         		+"id=" + e.getAccountID()
-                        		+">DELETE</a></td>");
+                        		+">DELETE</a></td>"); */
+                        		out.print("<td>");
+                        		out.print("<a href=" + request.getContextPath() + "/listStaffController?action=edit&id=" + e.getAccountID() + " class=\"btn-link\" onclick=\"handleEditRoom(" + e.getAccountID() + ")\">");
+                        		out.print("<button class=\"btn-edit-room\" style=\"width: 30px; height: 30px; background-color: #0076ff; color: white; border: none; border-radius: 4px;\">"); // Adjusted style
+                        		out.print("<i class=\"fa-solid fa-pen\"></i>");
+                        		out.print("</button>");
+                        		out.print("</a>");
+                        		out.print("</td>");
+
+
+                        		out.print("<td>");
+                        		out.print("<a href=" + request.getContextPath() + "/listStaffController?action=delete&id=" + e.getAccountID() + " class=\"btn-link\" onclick=\"handleDeleteRoom(" + e.getAccountID() + ")\">");
+                        		out.print("<button class=\"btn-delete-room\" style=\"width: 30px; height: 30px; background-color: #d13d3c; color: white; border: none; border-radius: 4px;\">"); // Add color: red
+                        		out.print("<i class=\"fa-solid fa-trash\"></i>");
+                        		out.print("</button>");
+                        		out.print("</a>");
+                        		out.print("</td>");
+
                         		out.print("</tr>");
-								c++;
+
+
+
+                                c++;
                         	}  
+                         	
                         	%>  
                     </table>
                     
@@ -241,11 +263,24 @@
             </div>
     </div>
     <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<!--     <script >
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector(".btn-edit-room").addEventListener("click", function() {
+            window.location.href = "homeController?action=post"; 
+        });
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector(".btn-delete-room").addEventListener("click", function() {
+            window.location.href = "homeController?action=post"; 
+        });
+    });
+
+    </script> -->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript"></script>
   
-      <script src="/NMCNPM/Manager/js/management.js"></script>
+      <script src="/NMCNPM/Manager1/js/management.js"></script>
   </body>
 </html>
 

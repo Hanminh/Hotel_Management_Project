@@ -7,8 +7,8 @@
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quản Trị Khách Sạn</title>
-    <link rel="stylesheet" href="/NMCNPM/Manager/css/management.css">
-    <link rel="stylesheet" href="/NMCNPM/Manager/fontawesome-free-6.5.1-web/css/all.min.css">
+    <link rel="stylesheet" href="/NMCNPM/Manager1/css/management.css">
+    <link rel="stylesheet" href="/NMCNPM/Manager1/fontawesome-free-6.5.1-web/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
   </head>
@@ -107,7 +107,7 @@
                 </div>
                 <!-- Các bài viết -->
                 <div class="post-content" >
-                    <img  onclick="showPostDetail('../img/post1.jpg')" class="img-post" src="/NMCNPM/Manager/img/post1.jpg" style="height: 200px; width: 35%; cursor: zoom-in;">
+                    <img  onclick="showPostDetail('../img/post1.jpg')" class="img-post" src="/NMCNPM/Manager1/img/post1.jpg" style="height: 200px; width: 35%; cursor: zoom-in;">
                     <div class="post-content-list">
                         <span class="post-content-list" style="width: 100%; text-align: center;">Ưu đãi cực SỐC với chương trình GIẢM 50% không giới hạn giá trị tối đa</span>
                         <div class="detail">
@@ -118,7 +118,7 @@
                 </div>
                 
                 <div class="post-content">
-                    <img  onclick="showPostDetail('../img/post2.jpg')" class="img-post" src="/NMCNPM/Manager/img/post2.jpg" style="height: 200px; width: 35%; cursor: zoom-in;">
+                    <img  onclick="showPostDetail('../img/post2.jpg')" class="img-post" src="/NMCNPM/Manager1/img/post2.jpg" style="height: 200px; width: 35%; cursor: zoom-in;">
                     <div class="post-content-list">
                         <span class="post-content-list" style="width: 100%; text-align: center;">Khuyến mãi 40% khi đặt phòng thông qua trang website của khách sạn</span>
                         <div class="detail">
@@ -129,7 +129,7 @@
                 </div>
 
                 <div class="post-content">
-                    <img  onclick="showPostDetail('../img/post3.jpg' )" class="img-post" src="/NMCNPM/Manager/img/post3.jpg" style="height: 200px; width: 35%; cursor: zoom-in;">
+                    <img  onclick="showPostDetail('../img/post3.jpg' )" class="img-post" src="/NMCNPM/Manager1/img/post3.jpg" style="height: 200px; width: 35%; cursor: zoom-in;">
                     <div class="post-content-list">
                         <span class="post-content-list" style="width: 100%; text-align: center;">Đặt phòng khách sạn trên ứng dụng ngân hàng và ví VNPAY giảm tới 300.000 đồng</span>
                         <div class="detail">
@@ -148,6 +148,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript"></script>
   
-      <script src="/NMCNPM/Manager/js/management.js"></script>
+      <script src="/NMCNPM/Manager1/js/management.js"></script>
   </body>
 </html>

@@ -5,12 +5,12 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import DAO.RoomDAO;
 import model.Room;
@@ -69,7 +69,7 @@ public class AddRoom extends HttpServlet {
 		}else {
 			Room new_room = new Room(roomID, roomName, roomAmount, roomType, roomPrice, roomStatus, roomDescription);
 			roomDAO.insert(new_room);
-			url = "/manager.jsp";
+			url = "/homeController?action=listRoom";
 		}
 		ArrayList<Room> roomList = roomDAO.selectAll();
 		request.setAttribute("roomList", roomList);

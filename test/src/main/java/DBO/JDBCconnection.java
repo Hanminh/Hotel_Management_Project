@@ -11,7 +11,7 @@ public class JDBCconnection {
         	DriverManager.registerDriver(new com.mysql.jdbc.Driver());
             String url = "jdbc:mySQL://localhost:3306/hotelmanagenment";
             String username = "root";
-            String password = "DBCB220203";
+            String password = "Minhhan100919@";
             c = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             throw new RuntimeException(e);
