@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+       <%@page import = "DAO.OrderDAO" %>
+   <%@page import = "java.util.ArrayList" %>
+   <%@page import = "model.Order" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,20 +94,23 @@
           </div>
       </div>
       
-        <!-- Danh sách đơn đặt phòng -->
+       <!-- Danh sách đơn đặt phòng -->
+       <!-- Danh sách đơn đặt phòng -->
         <div class="management-content-container list-book-room ">
             <div class="title">Danh sách đơn đặt phòng</div>
             <div class="search">
+            <form action = "../FindOrder" method = "GET">
               <input
                 type="text"
                 id="search"
                 name="search"
                 placeholder="Nhập mã đặt phòng"
               />
-              <button class="btn-search">
+              <button class="btn-search" type ="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 Tìm kiếm
               </button>
+              </form>
             </div>
             <div class="management-content">
               <div class="rooms">
@@ -118,37 +124,54 @@
                     <th style="width: 10%">Trạng thái</th>
                     <th style="width: 10%">Hành động</th>
                   </tr>
-                  <tr class="book-room">
-                    <td>1</td>
-                    <td>Phòng 101</td>
-                    <td style="text-align: left">
-                      <ul>
-                        <li><span>Tên:</span>Nguyễn Văn A</li>
-                        <li><span>Email:</span>nguyenvana@gmail.com</li>
-                        <li><span>Phone:</span> 0313232232</li>
-                      </ul>
-                    </td>
-                    <td style="text-align: left">
-                      <ul>
-                        <li><span>Ngày nhận phòng:</span>2023-03-17:20:10</li>
-                        <li><span>Ngày trả phòng:</span>2023-03-17:20:10</li>
-                        <li><span>Tổng tiền:</span>2.400.000 VND</li>
-                      </ul>
-                    </td>
-                    <td>123456</td>
-                    <td>Đã thanh toán</td>
-                    <td>
-                      <button class="btn-delete-room">
-                        <i class="fa-solid fa-trash"></i>
-                      </button>
-                    </td>
-                  </tr>
+                  <%
+           		int stt=1;
+           		ArrayList<Order> list = new OrderDAO().selectAll();
+           		if(list != null){
+	           		for(Order od : list){%>
+	           			<tr class="book-room">
+	           			
+	           			<td><%= stt %></td>
+	           			<td><%= od.getRoomID()%></td>
+	           			
+		           			<td style="text-align: left">
+		           			<ul>
+		           			<li><span>Tên:</span><%= od.getCustomerName()%></li>
+		           			<li><span>CCCD:</span>><%= od.getCustomerCitizenID()%></li>
+		           			<li><span>Phone:</span><%= od.getCustomerPhoneNumber() %></li>
+		           			</ul>
+			            	</td>
+			            	
+			            	<td style="text-align: left">
+		           			<ul>
+		           			<li><span>Ngày nhận phòng:</span><%= od.getTimeStart() %></li>
+		           			<li><span>Ngày trả phòng:</span><%= od.getTimeEnd() %></li>
+		           			<li><span>Tổng tiền:</span><%= od.getOrderPrice() %></li>
+		           			</ul>
+			            	</td>
+			            	
+			            	<td><%= od.getOrderID()%></td>
+			            	<td><%= od.getOrderStatus() %></td>
+			            	
+			            	<td>
+			                <button class="btn-edit-room" onclick="handleEditBookRoom()"> 
+			                <i class="fa-solid fa-pen"></i>
+			              	</button>
+			              	<button class="btn-delete-room" >
+			                <i class="fa-solid fa-trash" ></i>
+			              	</button>
+			            	</td>
+	           			</tr>
+	           			<% stt++; 
+           			}
+           		}
+           %>
                 </table>
+             
               </div>
             </div>
         </div>
     </div>
-    
     <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>

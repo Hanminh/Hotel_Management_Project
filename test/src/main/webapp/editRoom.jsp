@@ -135,7 +135,7 @@
                             <td><%= room.getRoomPrice()%></td>
                             <td><%= room.getRoomStatus()%></td>
                             <% out.print("<td>");
-	                    		out.print("<a href=" +request.getContextPath()+"/RoomController?action=edit&id="+room.getRoomID()+">");
+                        		out.print("<a href=" +request.getContextPath()+"/RoomController?action=edit&id="+room.getRoomID()+">");
                         		out.print("<button class=\"btn-edit-room\" style=\"width: 30px; height: 30px; background-color: #0076ff; color: white; border: none; border-radius: 4px;\">"); // Adjusted style
                         		out.print("<i class=\"fa-solid fa-pen\"></i>");
                         		out.print("</button>");
@@ -148,7 +148,6 @@
                         		out.print("</button>");
                         		out.print("</a>");
                         		out.print("</td>");
-
                         		out.print("</tr>");
                         		%>
                              <% 	count++;
@@ -163,31 +162,31 @@
                 </div>
             </div>
            
-           
-
-            
-            <!-- Thêm Phòng Mới -->
-            <div class="add-room-container">
-                <div class="add-room-modal" onclick="closeAddRoomModal()">
-                <form action="AddRoom" method="POST">
-                    <i class="fa-solid fa-xmark icon-close"></i>
+            <!-- Chỉnh sửa thông tin phòng -->
+            <%
+            	Room r = new RoomDAO().selectById(request.getParameter("id"));
+            %>
+            <div class="edit-room-container" style="display: flex">
+                <div class="edit-room-modal">
+                    <form action="AddRoom" method="POST">
+                    <a href="RoomController?action=listRoom"> <i class="fa-solid fa-xmark icon-close"></i></a>
                     <div class="title">Tạo phòng mới</div>
                     <div class="content">
                     
                     <div style="margin-top:5px;" class="room-id">
                         <label for="room-image">ID</label>
-                        <input type="text" id="room-id" name="room-id" />
+                        <h1></h1> <%= r.getRoomID() %>
                     </div>
                     
                     <div style="margin-top:5px;"  class="room-name">
                         <label for="room-name">Tên phòng</label>
-                        <input type="text" id="room-name" name="room-name" />
+                        <input type="text" id="room-name" name="room-name" value = "<%= r.getRoomName() %>" />
                     </div>
                   
                     <div style="margin-top:5px;"  class="room-amount">
                     	<div style="display: inline;" class="room-type">
 	                        <label for="room-type">Loại phòng</label>
-	                        <select style="width: 150px; height: 30px; border-radius: 4px;" id="roomType" name="roomType">
+	                        <select style="width: 150px; height: 30px; border-radius: 4px;" id="roomType" name="roomType" >
 	                        	<option value = "Executive" > Phòng Executive </option>
 	                        	<option value = "Deluxe" > Phòng Deluxe </option>
 	                        	<option value = "Standard" > Phòng Standard </option>
@@ -213,57 +212,29 @@
                     </div> 
                     <div style="margin-top:5px;"  class="room-description">
                         <label for="room-description">Mô tả</label>
-                        <textarea name="room-description" id="room-description">
-                        </textarea>
+                        <input name="room-description" id="room-description" value ="<%= r.getRoomDescription()%>"/>
+                        
                     </div>
                 
                     <div style="margin-top:5px;"  class="room-price">
                         <label for="room-price">Giá</label>
-                        <input type="text" name="room-price" id="room-price" />
+                        <input type="text" name="room-price" id="room-price" value = "<%= r.getRoomPrice() %>" />
                     </div>
-                    <button  type ="submit"> Tạo mới </button>
+                    <button  type ="submit"> Update </button>
                     </div>
                 </form>
                 </div>
             </div>
-            <!-- Chỉnh sửa thông tin phòng -->
-            <div class="edit-room-container">
-                <div class="edit-room-modal">
-                    <form action="" method="POST">
-                        <i class="fa-solid fa-xmark icon-close"></i>
-                        <div class="title">Chỉnh Sửa</div>
-                        <div class="content">
-                        <div class="edit-room-name">
-                            <label for="edit-room-name">Tên phòng</label>
-                            <input type="text" id="edit-room-name" name="edit-room-name" />
-                        </div>
-                        <div class="edit-room-image">
-                            <label for="edit-room-image">Link hình ảnh</label>
-                            <input type="text" id="edit-room-image" name="edit-room-image" />
-                        </div>
-                        <div class="edit-room-type">
-                            <label for="edit-room-type">Loại phòng</label>
-                            <input type="text" id="edit-room-type" name="edit-room-type" />
-                        </div>
-                        <div class="edit-room-description">
-                            <label for="edit-room-description">Mô tả</label>
-                            <textarea name="edit-room-description" id="edit-room-description">
-                            </textarea>
-                        </div>
-                        <div class="edit-room-price">
-                            <label for="edit-room-price">Giá</label>
-                            <input type="text" name="edit-room-price" id="edit-room-price" />
-                        </div>
-                        <div class="btn-submit btn btn-primary" >Cập Nhập</div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-    </div>
+         </div>
     <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript"></script>
+    <script>
+    document.querySelector(".account").addEventListener("click", function() {
+        window.location.href = "homeController?action=admin";
+    });
+    </script>
   
       <script src="/NMCNPM/Manager1/js/management.js"></script>  </body>
 </html>

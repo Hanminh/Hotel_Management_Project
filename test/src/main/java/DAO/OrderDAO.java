@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import DBO.JDBCconnection;
@@ -20,9 +21,9 @@ public class OrderDAO implements DAOInterface<Order> {
 			Connection connection = JDBCconnection.getConnection();
 			// Tạo ra đối tượng statement
 			String sql = "SELECT * FROM order";
-			PreparedStatement statement = connection.prepareStatement(sql);
+			Statement statement = connection.createStatement();
 			//Thực thi câu lệnh sql
-			ResultSet rs = statement.executeQuery();
+			ResultSet rs = statement.executeQuery(sql);
 			//Xử lí kết quả:
 			while(rs.next()) {
 				String orderID = rs.getString("idOrder");

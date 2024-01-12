@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <%@page import = "DAO.OrderDAO" %>
+   <%@page import = "java.util.ArrayList" %>
+   <%@page import = "model.Order" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-    <link rel="stylesheet" href="./css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./css/staff.css" />
+    <link rel="stylesheet" href="/NMCNPM/css_M/bootstrap.min.css" />
+    <link rel="stylesheet" href="/NMCNPM/css_M/staff.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -319,43 +322,83 @@
 
     <!-- Chỉnh sửa đơn đặt phòng -->
 
-    <div class="edit-book-room-container">
-      <div class="edit-book-room-modal">
-        <form action="" method="POST">
-          <i class="fa-solid fa-xmark icon-close"></i>
-          <div class="title">Chỉnh sửa đơn đặt phòng</div>
-          <div class="content">
-            <div class="customer-name">
-              <label for="customer-name">Tên khách hàng</label>
-              <input type="text" id="customer-name" name="customer-name" />
-            </div>
-            <div class="customer-telephone">
-              <label for="customer-telephone">Số điện thoại</label>
+   <!-- Danh sách đơn đặt phòng -->
+        <div class="management-content-container list-book-room ">
+            <div class="title">Danh sách đơn đặt phòng</div>
+            <div class="search">
+            <form action = "../FindOrder" method = "GET">
               <input
                 type="text"
-                id="customer-telephone"
-                name="customer-telephone"
+                id="search"
+                name="search"
+                placeholder="Nhập mã đặt phòng"
               />
+              <button class="btn-search" type ="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                Tìm kiếm
+              </button>
+              </form>
             </div>
-            <div class="time-start">
-              <label for="time-start">Ngày nhận phòng</label>
-              <input type="date" id="time-start" name="time-start" />
+            <div class="management-content">
+              <div class="rooms">
+                <table id="bb" style="width: 100%">
+                  <tr>
+                    <th style="width: 5%">STT</th>
+                    <th style="width: 10%">Tên phòng</th>
+                    <th style="width: 25%">Tên khách hàng</th>
+                    <th style="width: 30%">Thông tin phòng</th>
+                    <th style="width: 10%">Mã đặt phòng</th>
+                    <th style="width: 10%">Trạng thái</th>
+                    <th style="width: 10%">Hành động</th>
+                  </tr>
+                  <%
+           		int stt=1;
+           		ArrayList<Order> list = new OrderDAO().selectAll();
+           		if(list != null){
+	           		for(Order od : list){%>
+	           			<tr class="book-room">
+	           			
+	           			<td><%= stt %></td>
+	           			<td><%= od.getRoomID()%></td>
+	           			
+		           			<td style="text-align: left">
+		           			<ul>
+		           			<li><span>Tên:</span><%= od.getCustomerName()%></li>
+		           			<li><span>CCCD:</span>><%= od.getCustomerCitizenID()%></li>
+		           			<li><span>Phone:</span><%= od.getCustomerPhoneNumber() %></li>
+		           			</ul>
+			            	</td>
+			            	
+			            	<td style="text-align: left">
+		           			<ul>
+		           			<li><span>Ngày nhận phòng:</span><%= od.getTimeStart() %></li>
+		           			<li><span>Ngày trả phòng:</span><%= od.getTimeEnd() %></li>
+		           			<li><span>Tổng tiền:</span><%= od.getOrderPrice() %></li>
+		           			</ul>
+			            	</td>
+			            	
+			            	<td><%= od.getOrderID()%></td>
+			            	<td><%= od.getOrderStatus() %></td>
+			            	
+			            	<td>
+			                <button class="btn-edit-room" onclick="handleEditBookRoom()"> 
+			                <i class="fa-solid fa-pen"></i>
+			              	</button>
+			              	<button class="btn-delete-room" >
+			                <i class="fa-solid fa-trash" ></i>
+			              	</button>
+			            	</td>
+	           			</tr>
+	           			<% stt++; 
+           			}
+           		}
+           %>
+                </table>
+              </div>
             </div>
-            <div class="time-end">
-              <label for="time-end">Ngày trả phòng</label>
-              <input type="date" name="time-end" id="time-end" />
-            </div>
-            <div class="status">
-              <label for="status">Trạng thái</label>
-              <input type="text" name="status" id="status" />
-            </div>
-            <div class="btn-submit btn btn-primary">Cập nhật</div>
-          </div>
-        </form>
-      </div>
-    </div>
+        </div>
 
-    <script src="./js/bootstrap.bundle.min.js"></script>
-    <script src="./js/staff.js"></script>
+    <script src="/NMCNPM/js/bootstrap.bundle.min.js"></script>
+    <script src="/NMCNPM/js/staff.js"></script>
   </body>
 </html>

@@ -148,9 +148,34 @@ public class RoomDAO implements DAOInterface<Room>{
 		return count;
 	}
 
+	
+	
 	@Override
-	public boolean delete(Room room) {
-		return true;
+	public boolean delete(Room t) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean deleteRoom(String id) {
+		int rs = 0;
+		try {
+			//Tạo kết nối đến CSDL
+			Connection connection = JDBCconnection.getConnection();
+			// Tạo ra đối tượng statement
+			String sql = "delete from room WHERE idRoom = ?";
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setString(1, id);
+			//Thực thi câu lệnh sql
+			rs = statement.executeUpdate();
+			//Xử lí kết quả:
+			
+			JDBCconnection.closeConnection(connection);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		if(rs == 0) {
+			return false;
+		} return true;
 	}
 
 	@Override

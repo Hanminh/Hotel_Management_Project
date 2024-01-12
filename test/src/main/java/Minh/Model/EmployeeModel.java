@@ -170,10 +170,11 @@ public class EmployeeModel {
 		Connection connect = DatabaseConfig.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String query = "select * from employee where idEmployee =?";
+		String query = "select * from employee where idEmployee like ?";
 		try {
 			stmt = connect.prepareStatement(query);
-			stmt.setString(1, id);
+			String idEmp = "%" + id + "%";
+			stmt.setString(1, idEmp );
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				String accountID = rs.getString("idAccount");

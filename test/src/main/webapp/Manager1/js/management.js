@@ -143,6 +143,11 @@ closeEditStaff.onclick =() =>{
     editStaff.classList.remove("active");
 }
 
+const closeAddRoom = $(".add-room-container .icon-close");
+closeAddRoom.onclick =() =>{
+    closeAddRoom.classList.remove("active");
+}
+
 
 const handleEditRoom = () => {
     editRoomContainer.classList.add("active");
@@ -158,6 +163,7 @@ function closeAddRoomModal() {
     var addRoomContainer = document.querySelector('.add-room-container');
     addRoomContainer.classList.remove('active');
 }
+
 
 const handleEditBookRoom = () => {
     editBookRoomContainer.classList.add("active");
