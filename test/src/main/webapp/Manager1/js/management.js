@@ -118,7 +118,7 @@ const $$ = document.querySelectorAll.bind(document);
 
 const editRoomContainer = $(".edit-room-container");
 const closeEditRoomContainer = $(".edit-room-container .icon-close");
-
+const closeEditBookRoomContainer = $(".edit-book-room-container .icon-close");
 
 const closeAddRoomContainer = $(".add-room-container .icon-close");
 
@@ -164,7 +164,13 @@ function closeAddRoomModal() {
     addRoomContainer.classList.remove('active');
 }
 
+function closeAddBookRoomModal() {
+    var closeEditBookRoomContainer = document.querySelector('.add-room-container');
+    closeEditBookRoomContainer.classList.remove('active');
+}
 
+
+const editBookRoomContainer = $(".edit-book-room-container");
 const handleEditBookRoom = () => {
     editBookRoomContainer.classList.add("active");
 };
@@ -177,6 +183,13 @@ closeEditRoomContainer.onclick = () => {
 closeAddRoomContainer.onclick = () => {
     addRoomContainer.classList.remove("active");
 };
+
+
+
+
+
+
+
 
 
 

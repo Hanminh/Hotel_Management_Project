@@ -115,7 +115,7 @@
                             <a class="list-group-item list-group-item-action" data-toggle="list"
                                 href="#account-info">Info</a>
                             <a  class="list-group-item list-group-item-action" 
-                                href="/NMCNPM-main/index.html">sign out</a>
+                                href="/NMCNPM/index.jsp">sign out</a>
                         </div>
                     </div>
                     

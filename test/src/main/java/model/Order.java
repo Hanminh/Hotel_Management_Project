@@ -16,6 +16,7 @@ public class Order {
     public Order() {
     };
 
+    
     public Order(String orderID, String roomID, String customerName, String customerPhoneNumber, String customerCitizenID,
             Date timeStart, Date timeEnd, double orderPrice, String orderStatus) {
         this.orderID = orderID;

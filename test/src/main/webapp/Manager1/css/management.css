@@ -1217,3 +1217,86 @@ font-size: 20px;
     display: block;
   }
   
+  
+  
+  
+.edit-book-room-container {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2;
+  justify-content: center;
+  align-items: center;
+}
+.edit-book-room-container.active {
+  display: flex;
+}
+.edit-book-room-container .edit-book-room-modal {
+	
+  width: 50%;
+  height: 83%;
+  background-color: white;
+  color: black;
+  padding: 4px 20px;
+  border-radius: 4px;
+  position: relative;
+  animation: fadeIn ease 0.5s;
+ 
+  overflow-y: auto;
+}
+.edit-book-room-container .edit-book-room-modal .icon-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px;
+  font-size: 24px;
+}
+.edit-book-room-container .edit-book-room-modal .icon-close:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+.edit-book-room-container .edit-book-room-modal .title {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+.edit-book-room-container .edit-book-room-modal .content input,
+.edit-book-room-container .edit-book-room-modal .content textarea {
+  width: 100%;
+  padding: 5px 14px;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid #ccc;
+  margin: 4px 0 8px 0;
+}
+.edit-book-room-container .edit-book-room-modal .content label {
+  font-weight: 500;
+}
+.edit-book-room-container .edit-book-room-modal .content .btn-submit {
+  margin-top: 12px;
+  padding: 8px 20px;
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

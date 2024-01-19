@@ -1,10 +1,8 @@
-<%@page import="DAO.RoomDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
        <%@page import = "DAO.OrderDAO" %>
    <%@page import = "java.util.ArrayList" %>
    <%@page import = "model.Order" %>
-   <%@page import = "DAO.RoomDAO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,12 +94,74 @@
           </div>
       </div>
       
-       <!-- Danh sách đơn đặt phòng -->
+      	<%
+      		Order o = new OrderDAO().selectById(request.getParameter("id"));
+      	%>
+     
+            <!-- Chỉnh sửa thông tin đặt phòng -->
+            <div class="edit-book-room-container">
+                <div class="edit-book-room-modal">
+                    <form action="RoomOrderController?action=update" method="POST">
+                    <a href="RoomOrderController?action=listOrder">  <i class="fa-solid fa-xmark icon-close"></i></a>
+                       <input type="hidden" name = "id" value = "<%= o.getOrderID() %>" >
+                        <div class="title">Chỉnh Sửa</div>
+                        <div class="content">
+                        <div>
+                        	<h1 style=" diplay:inline; color: green; font-size: 20px; ">ID Order: <%= o.getOrderID() %> </h1>
+                        </div>
+                         <div class="edit-room-name">
+                            <label for="edit-room-name">ID phòng</label>
+                            <input type="text" id="edit-room-name" name="room-id" value = "<%= o.getRoomID()%>"/>
+                        </div>
+                         <div class="edit-room-name">
+                            <label for="edit-room-name">Tên khách hàng</label>
+                            <input type="text" id="edit-room-name" name="customer-name" value = "<%= o.getCustomerName() %>" />
+                        </div>
+                         <div class="edit-room-name">
+                            <label for="edit-room-name">CCCD</label>
+                            <input type="text" id="edit-room-name" name="cccd" value = "<%= o.getCustomerCitizenID() %>"/>
+                        </div>
+                         <div class="edit-room-name">
+                            <label for="edit-room-name">Phone</label>
+                            <input type="text" id="edit-room-name" name="phone" value = "<%= o.getCustomerPhoneNumber() %>" />
+                        </div>
+                        <div class="edit-room-name">
+                            <label for="edit-room-name">Ngày nhận phòng</label>
+                            <input type="date" id="edit-room-name" name="indate" value = "<%= o.getTimeStart() %>"/>
+                        </div>
+                          <div class="edit-room-name">
+                            <label for="edit-room-name">Ngày trả phòng</label>
+                            <input type="date" id="edit-room-name" name="outdate" value = "<%= o.getTimeEnd() %>" />
+                        </div>
+                         <div class="edit-room-name">
+                            <label for="edit-room-name">Tổng tiền</label>
+                            <input type="text" id="edit-room-name" name="price" value = "<%= o.getOrderPrice() %>"/>
+                        </div>
+                        <div style="display: inline;" class="room-type">
+	                        <label for="room-type">Trạng thái</label>
+	                        <select style="width: 150px; height: 30px; border-radius: 4px;" id="roomType" name="orderStatus" >
+	                        	<option value = "Executive" > Pending</option>
+	                        	<option value = "Deluxe" > Confirmed </option>
+	                        	
+	                        </select>
+           				</div>
+                        
+                     
+                        
+                        <div  >
+                             <input type="submit" value="Cập nhật"> 
+                        </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+      
+     
        <!-- Danh sách đơn đặt phòng -->
         <div class="management-content-container list-book-room ">
             <div class="title">Danh sách đơn đặt phòng</div>
             <div class="search">
-            <form action = "RoomOrderController?action=search" method = "post">
+            <form action = "../FindOrder" method = "GET">
               <input
                 type="text"
                 id="search"
@@ -119,33 +179,30 @@
                 <table id="bb" style="width: 100%">
                   <tr>
                     <th style="width: 5%">STT</th>
-                    <th style="width: 10%">Mã đặt phòng</th>
+                     <th style="width: 10%">Mã đặt phòng</th>
                     <th style="width: 10%">Tên phòng</th>
                     <th style="width: 25%">Tên khách hàng</th>
                     <th style="width: 30%">Thông tin phòng</th>
-
+                   
                     <th style="width: 10%">Trạng thái</th>
                     <th style="width: 5%">Edit</th>
                     <th style="width: 5%">Delete</th>
                   </tr>
                   <%
            		int stt=1;
-           		ArrayList<Order> list = (ArrayList)request.getAttribute("list");
+           		ArrayList<Order> list = new OrderDAO().selectAll();
            		if(list != null){
 	           		for(Order od : list){%>
 	           			<tr class="book-room">
-	           			<%
-	           				String id = od.getRoomID();
-	           				String roomName = new RoomDAO().selectById(id).getRoomName();
-	           			%>
+	           			
 	           			<td><%= stt %></td>
-			            <td><%= od.getOrderID()%></td>
-	        	        <td> <%= roomName %></td>
+	           			<td><%= od.getOrderID()%></td>
+	           			<td><%= od.getRoomID()%></td>
 	           			
 		           			<td style="text-align: left">
 		           			<ul>
 		           			<li><span>Tên:</span><%= od.getCustomerName()%></li>
-		           			<li><span>CCCD:</span><%= od.getCustomerCitizenID()%></li>
+		           			<li><span>CCCD:</span>><%= od.getCustomerCitizenID()%></li>
 		           			<li><span>Phone:</span><%= od.getCustomerPhoneNumber() %></li>
 		           			</ul>
 			            	</td>
@@ -199,6 +256,9 @@
               </div>
             </div>
         </div>
+        
+        
+        
     </div>
     <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>

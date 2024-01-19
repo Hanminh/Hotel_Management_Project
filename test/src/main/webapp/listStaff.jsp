@@ -205,7 +205,7 @@
                             <th style="width: 5%">Id </th>
                             <th style="width: 15%">Họ Tên</th>
                             <th style="width: 10%">Giới Tính</th>
-                            <th style="width: 10%">Ngày Sinh</th>
+                            <th style="width: 10%">Tuổi</th>
                             <th style="width: 15%">Địa Chỉ</th>
                             <th style="width: 15%">Số Điện Thoại</th>
                             <th style="width: 15%">Email</th>

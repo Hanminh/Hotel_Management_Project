@@ -1,11 +1,15 @@
 package Minh.Controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
+import DAO.OrderDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Order;
 
 /**
  * Servlet implementation class HomeController
@@ -45,6 +49,8 @@ public class HomeController extends HttpServlet {
 			break;
 		}
 		case "listBookRoom" : {
+			ArrayList<Order> list = new OrderDAO().selectAll();
+			request.setAttribute("list", list);
 			request.getRequestDispatcher("listBookRoom.jsp").forward(request, response);
 			break;
 		}

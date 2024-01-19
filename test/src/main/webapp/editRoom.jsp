@@ -174,8 +174,7 @@
                     <div class="content">
                     
                     <div style="margin-top:5px;" class="room-id">
-                        <label for="room-image">ID</label>
-                        <h1></h1> <%= r.getRoomID() %>
+                        <h1 style=" diplay:inline; color: green; font-size: 20px; ">ID: <%= r.getRoomID() %></h1> 
                     </div>
                     
                     <div style="margin-top:5px;"  class="room-name">

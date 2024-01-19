@@ -7,18 +7,47 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="./fonts/icomoon/style.css">
-    <link rel="stylesheet" href="./css_cus/jquery-ui.css">
-    <link rel="stylesheet" href="./css_cus/owl.carousel.min.css">
-    <link rel="stylesheet" href="./css_cus/owl.theme.default.min.css">
-    <link rel="stylesheet" href="./css_cus/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="./css_cus/animate.css"> 
+    <link rel="stylesheet" href="/NMCNPM/customer/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="/NMCNPM/customer/css_cus/jquery-ui.css">
+    <link rel="stylesheet" href="/NMCNPM/customer/css_cus/owl.carousel.min.css">
+    <link rel="stylesheet" href="/NMCNPM/customer/css_cus/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/NMCNPM/customer/css_cus/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/NMCNPM/customer/css_cus/animate.css"> 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
-    <link rel="stylesheet" href="./fonts/flaticon/font/flaticon.css">
-    <link rel="stylesheet" href="./css_cus/aos.css">
-    <link rel="stylesheet" href="./css_cus/bootstrap.min.css">
-    <link rel="stylesheet" href="./css_cus/style.css">
-    <link rel="stylesheet" href="./css_cus/magnific-popup.css">
+    <link rel="stylesheet" href="/NMCNPM/customer/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/NMCNPM/customer/css_cus/aos.css">
+    <link rel="stylesheet" href="/NMCNPM/customer/css_cus/bootstrap.min.css">
+    <link rel="stylesheet" href="/NMCNPM/customer/css_cus/style.css">
+    <link rel="stylesheet" href="/NMCNPM/customer/css_cus/magnific-popup.css">
+    <style> 
+    	.add-staff-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2;
+  justify-content: center;
+  align-items: center;
+}
+.add-staff-container.active {
+  display: flex;
+}
+.add-staff-container .add-staff-modal {
+  width: 25%;
+  height: 37%;
+  background-color: white;
+  color: black;
+  padding: 4px 20px;
+  border-radius: 4px;
+  position: relative;
+  animation: fadeIn ease 0.5s;
+  text-align:center;
+  font-size:36px;
+}
+    </style>
     
     
   </head>
@@ -150,14 +179,14 @@
           </div>
         </div>
 
-        <div class="container">
+        <div class="container" >
           <div class="room-groups">
             <div class="room-group">
             <!-- Các phòng và thẻ card cho nhóm 1 -->
             <!-- ... -->
               <div class="container" style="display: flex; border-radius: 3%; flex-wrap: wrap;">
                     <div style="display: flex; align-items: center;">
-                        <img src="./image_cus/room1.jpeg" style="width: 40%; height: 100%; object-fit: cover; border-radius: 2%;" alt="">
+                        <img src="/NMCNPM/customer/image_cus/room1.jpeg" style="width: 40%; height: 100%; object-fit: cover; border-radius: 2%;" alt="">
                         <div class="card" style=" min-width:90% ; max-width: 90%; min-height: 100%; ; overflow: hidden;">
                         <div class="card-body">
                                 <h4 class="card-title">Phòng Tiêu Chuẩn</h4>
@@ -174,7 +203,7 @@
                     </div>
           
                     <div style="display: flex; align-items: center; margin-top: 3%;">
-                        <img src="./image_cus/room2.jpeg" style="width: 40%; height: 100%; object-fit: cover; border-radius: 2%;" alt="">
+                        <img src="/NMCNPM/customer/image_cus/room2.jpeg" style="width: 40%; height: 100%; object-fit: cover; border-radius: 2%;" alt="">
                         <div class="card" style=" min-width:90% ; max-width: 90%; min-height: 100%; ; overflow: hidden;">
                         <div class="card-body">
                                 <h4 class="card-title">Phòng Hạng Sang</h4>
@@ -192,7 +221,7 @@
                     </div>
           
                     <div style="display: flex; align-items: center; margin-top: 3%;">
-                        <img src="./image_cus/room3.jpeg" style="width: 40%; height: 100%; object-fit: cover; border-radius: 2%;" alt="">
+                        <img src="/NMCNPM/customer/image_cus/room3.jpeg" style="width: 40%; height: 100%; object-fit: cover; border-radius: 2%;" alt="">
                         <div class="card" style=" min-width:90% ; max-width: 90%; min-height: 100%; ; overflow: hidden;">
                         <div class="card-body">
                                 <h4 class="card-title">Phòng Hạng Sang</h4>
@@ -210,7 +239,7 @@
                     </div>
           
                     <div style="display: flex; align-items: center; margin-top: 3%;">
-                        <img src="./image_cus/room4.jpeg" style="width: 40%; height: 100%; object-fit: cover; border-radius: 2%;" alt="">
+                        <img src="/NMCNPM/customer/image_cus/room4.jpeg" style="width: 40%; height: 100%; object-fit: cover; border-radius: 2%;" alt="">
                         <div class="card" style=" min-width:90% ; max-width: 90%; min-height: 100%; ; overflow: hidden;">
                         <div class="card-body">
                                 <h4 class="card-title">Phòng Hạng Sang</h4>
@@ -236,7 +265,7 @@
               
     
               <div style="display: flex; align-items: center; margin-top: 3%;">
-                  <img src="./image_cus/room6.jpeg" style="width: 40%; height: 100%; object-fit: cover; border-radius: 2%;" alt="">
+                  <img src="/NMCNPM/customer/image_cus/room6.jpeg" style="width: 40%; height: 100%; object-fit: cover; border-radius: 2%;" alt="">
                   <div class="card" style=" min-width:90% ; max-width: 90%; min-height: 100%; ; overflow: hidden;">
                   <div class="card-body">
                           <h4 class="card-title">Phòng Tiêu Chuẩn</h4>
@@ -254,7 +283,7 @@
               </div>
     
               <div style="display: flex; align-items: center; margin-top: 3%;">
-                  <img src="./image_cus/room3.jpeg" style="width: 40%; height: 100%; object-fit: cover; border-radius: 2%;" alt="">
+                  <img src="/NMCNPM/customer/image_cus/room3.jpeg" style="width: 40%; height: 100%; object-fit: cover; border-radius: 2%;" alt="">
                   <div class="card" style=" min-width:90% ; max-width: 90%; min-height: 100%; ; overflow: hidden;">
                   <div class="card-body">
                           <h4 class="card-title">Phòng Hạng Sang</h4>
@@ -271,7 +300,7 @@
               </div>
     
               <div style="display: flex; align-items: center; margin-top: 3%;">
-                  <img src="./image_cus/room4.jpeg" style="width: 40%; height: 100%; object-fit: cover; border-radius: 2%;" alt="">
+                  <img src="/NMCNPM/customer/image_cus/room4.jpeg" style="width: 40%; height: 100%; object-fit: cover; border-radius: 2%;" alt="">
                   <div class="card" style=" min-width:90% ; max-width: 90%; min-height: 100%; ; overflow: hidden;">
                   <div class="card-body">
                           <h4 class="card-title">Phòng Hạng Sang</h4>
@@ -322,31 +351,49 @@
             </button>
           </div>
           <div class="modal-body">
-            <form id="bookingForm">
+            <form id="bookingForm" action ="../RoomOrderController?action=insert" method="post">
               <div class="mb-3">
                 <label for="customerName" class="form-label">Họ và tên:</label>
-                <input type="text" class="form-control" id="customerName" required>
+                <input type="text" class="form-control" id="customerName" name="name" required>
               </div>
+              <input type = "hidden" name = "id" value="R007" >
               <div class="mb-3">
                 <label for="phoneNumber" class="form-label">Số điện thoại:</label>
-                <input type="tel" class="form-control" id="phoneNumber" required>
+                <input type="tel" class="form-control" id="phoneNumber" name = "phone"required>
               </div>
               <div class="mb-3">
-                <label for="email" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="email" required>
+                <label for="email" class="form-label">CCCD:</label>
+                <input type="text" class="form-control" id="email" name = "email" required>
               </div>
               <div class="mb-3">
-                <label for="checkInTime" class="form-label">Giờ check in:</label>
-                <input type="text" class="form-control" id="checkInTime" placeholder="VD: 14:00" required>
+                <label for="checkInTime" class="form-label">check in:</label>
+                <input type="date" class="form-control" id="checkInTime" name = "indate" required>
               </div>
-              <div class="mb-3 text-center"> 
-                <button type="submit" class="btn btn-primary">Xác nhận đặt phòng</button>
+               <div class="mb-3">
+                <label for="checkInTime" class="form-label">check out:</label>
+                <input type="date" class="form-control" id="checkInTime" name = "outdate" required>
+              </div>
+              <div class="mb-3 text-center" onclick="showConfirmation()"> 
+                <button  type="submit" class="btn btn-primary">Xác nhận đặt phòng</button>
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
+    
+    <div class="add-staff-container">
+    	<div class="add-staff-modal">
+    		<div>
+    		Chúc mừng bạn đã đặt phòng thành công!
+    		</div> 
+    				
+    		<button onclick=" handleOkButtonClick()" style="display:block; background-color:orign;  margin: auto;"> ok</button>
+    	</div>
+    	
+    </div>
+    
+ 
 
     <footer class="site-footer">
       <div class="container">
@@ -398,28 +445,28 @@
     </footer>
   </div>
 
-  <script src="./js_cus/jquery-3.3.1.min.js"></script>
-  <script src="./js_cus/jquery-migrate-3.0.1.min.js"></script>
-  <script src="./js_cus/jquery-ui.js"></script>
-  <script src="./js_cus/popper.min.js"></script>
-  <script src="./js_cus/bootstrap.min.js"></script>
-  <script src="./js_cus/owl.carousel.min.js"></script>
-  <script src="./js_cus/jquery.stellar.min.js"></script>
-  <script src="./js_cus/jquery.countdown.min.js"></script>
-  <script src="./js_cus/jquery.magnific-popup.min.js"></script>
-  <script src="./js_cus/bootstrap-datepicker.min.js"></script>
-  <script src="./js_cus/aos.js"></script>
+  <script src="/NMCNPM/customer/js_cus/jquery-3.3.1.min.js"></script>
+  <script src="/NMCNPM/customer/js_cus/jquery-migrate-3.0.1.min.js"></script>
+  <script src="/NMCNPM/customer/js_cus/jquery-ui.js"></script>
+  <script src="/NMCNPM/customer/js_cus/popper.min.js"></script>
+  <script src="/NMCNPM/customer/js_cus/bootstrap.min.js"></script>
+  <script src="/NMCNPM/customer/js_cus/owl.carousel.min.js"></script>
+  <script src="/NMCNPM/customer/js_cus/jquery.stellar.min.js"></script>
+  <script src="/NMCNPM/customer/js_cus/jquery.countdown.min.js"></script>
+  <script src="/NMCNPM/customer/js_cus/jquery.magnific-popup.min.js"></script>
+  <script src="/NMCNPM/customer/js_cus/bootstrap-datepicker.min.js"></script>
+  <script src="/NMCNPM/customer/js_cus/aos.js"></script>
   
-  <script src="./js_cus/mediaelement-and-player.min.js"></script>
+  <script src="/NMCNPM/customer/js_cus/mediaelement-and-player.min.js"></script>
 
-  <script src="./js_cus/main.js"></script>
+  <script src="/NMCNPM/customer/js_cus/main.js"></script>
   <script>
     let currentGroup = 1;
 
     function showGroup(groupNumber) {
         // Ẩn tất cả các nhóm
         const groups = document.querySelectorAll('.room-group');
-        groups.forEach(group => group.style.display = 'none');
+        groups.forEach(group => group.style.display = 'flex');
 
         // Hiển thị nhóm được chọn
         const selectedGroup = document.querySelector(`.room-group:nth-child(${groupNumber})`);
@@ -470,9 +517,26 @@
         event.preventDefault();
 
         setTimeout(function () {
-            window.location.href = "../customer_index.html";
+            window.location.href = "../html/index.html";
         }, 500);
     });
+</script>
+
+
+<script>
+    function showConfirmation() {
+        // Hiển thị alert khi nút được nhấn
+        alert('Xác nhận đặt phòng!');
+
+       
+    }
+    function handleOkButtonClick() {
+        window.location.href="./room.jsp"
+        // Thêm mã xử lý khác nếu cần thiết
+    }
+
+    
+
 </script>
 
 

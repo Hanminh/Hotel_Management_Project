@@ -161,7 +161,7 @@
                     </div>
                     <div class="edit-staff-phone">
                    		<label for="edit-staff-Phone">Số điện thoại</label>
-                    	<input type ="number" name = "edit-staff-phone" id = "edit-staff-phone" value = "<%= e.getEmployeePhoneNumber()%>"/>
+                    	<input type ="text" name = "edit-staff-phone" id = "edit-staff-phone" value = "<%= e.getEmployeePhoneNumber()%>"/>
                     </div>
                     <div class="edit-staff-email">
                    		<label for="edit-staff-email">Email</label>
